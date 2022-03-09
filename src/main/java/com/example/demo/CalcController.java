@@ -25,7 +25,6 @@ public class CalcController {
 	@GetMapping("/add")
 	public String addition(int nr1, int nr2) {
 		
-		String message = "your good";
 		try{
 			int result = nr1+nr2;
 			return "Result: " + Integer.toString(result);
