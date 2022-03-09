@@ -1,43 +1,38 @@
 package com.example.demo;
 
-import java.io.IOException;
-
-import javax.servlet.http.HttpServletResponse;
-
-import org.springframework.core.SpringVersion;
-import org.springframework.core.io.ClassPathResource;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
-import org.springframework.util.StreamUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.server.ResponseStatusException;
+import org.springframework.web.client.HttpClientErrorException;
 
 @RestController
 public class CalcController {
 	
 	//substraction operation of two values
 	@GetMapping("/sub")
-	public String substraction(int nr1, int nr2) throws myException {
-		
-		System.out.println("ok");
-		return "Result: " + Integer.toString(nr1-nr2);
-        
-//		try {
-//			return "Result: " + Integer.toString(result);
- //       } catch (ActorNotFoundException ex) {
- //           throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Actor Not Found", ex);
-    //    }
+	public String substraction(String nr1, String nr2) {
+		 try{
+			 System.out.println("nr1: " + Integer.valueOf(nr1) + "nr2: " + Integer.valueOf(nr2));
+				
+		    return ("Result: " + Integer.valueOf(nr1));
+		 }
+		catch(NumberFormatException e ){
+		  return ("Check your inputs");
+		 }
 	}
 	
 	//addition operation of two values
 	@GetMapping("/add")
 	public String addition(int nr1, int nr2) {
-		int result = nr1+nr2;
-		return "Result: " + Integer.toString(result);
+		
+		String message = "your good";
+		try{
+			int result = nr1+nr2;
+			return "Result: " + Integer.toString(result);
+		 }
+		catch(HttpClientErrorException e ){
+			return ("Check your inputs");
+		 }
 	}
 	
 	//multiplication of two values
