@@ -17,37 +17,11 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
 @RestController
-public class hejController {
+public class CalcController {
 	
-	//testa stringbuilder
-	
-	//Default är GET när man använder @RequestMapping
-	@RequestMapping("/")
-	public String hej() {
-		return "hej elever";
-	}
-	
-	//Annars måste den definieras
-	@RequestMapping(method = RequestMethod.GET, path="/img", produces = MediaType.IMAGE_JPEG_VALUE)
-	public void img(HttpServletResponse response) throws IOException {
-		System.out.println("nu kör vi!");
-		
-		var imgFile = new ClassPathResource("598.jpg");
-		System.out.println(imgFile.getPath());
-		
-		response.setContentType(MediaType.IMAGE_JPEG_VALUE);
-		StreamUtils.copy(imgFile.getInputStream(), response.getOutputStream());
-	}
-	
-	@GetMapping("/vem")
-	public String hejVem(String Who) {
-		return "hej " + Who + ", vem är du?";
-	}
-	
+	//substraction operation of two values
 	@GetMapping("/sub")
 	public String substraction(int nr1, int nr2) throws myException {
-		System.out.println(SpringVersion.getVersion());
-		//int result = nr1-nr2;
 		
 		System.out.println("ok");
 		return "Result: " + Integer.toString(nr1-nr2);
@@ -59,19 +33,21 @@ public class hejController {
     //    }
 	}
 	
+	//addition operation of two values
 	@GetMapping("/add")
 	public String addition(int nr1, int nr2) {
 		int result = nr1+nr2;
 		return "Result: " + Integer.toString(result);
 	}
 	
+	//multiplication of two values
 	@GetMapping("/mult")
 	public String multiplication(int nr1, int nr2) {
 		int result = nr1*nr2;
 		return "Result: " + Integer.toString(result);
 	}
 	
-	
+	//user can select sub add or mult and any number of input variables
 	@GetMapping(value="/multVal/{type}/{values}")
 	public int test(@PathVariable int[] values, @PathVariable String type)
 	{
