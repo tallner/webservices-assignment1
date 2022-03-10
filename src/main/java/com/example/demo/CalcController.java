@@ -4,7 +4,7 @@ package com.example.demo;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.client.HttpClientErrorException;
+
 
 @RestController
 public class CalcController {
@@ -25,17 +25,13 @@ public class CalcController {
 		 return result;
 	}
 	
-	//addition operation of two values --> HttpClientErrorException does not work in this case!
+	//addition operation of two values
 	@GetMapping("/add")
 	public String addition(int nr1, int nr2) {
 		String result = "";
-		try{
-			result = "Result: " + Integer.toString(nr1+nr2);
-		 }
-		catch(HttpClientErrorException e ){
-			result = ("Check your inputs");
-		 }
 		
+		result = "Result: " + Integer.toString(nr1+nr2);
+		 
 		return result;
 	}
 	
@@ -66,15 +62,15 @@ public class CalcController {
 				
 				switch (type) {
 					case "sub": 
-						result = result - Integer.valueOf(values[i]);
+						result -= Integer.valueOf(values[i]);
 						resultString = Integer.toString(result);
 						break;
 					case "add": 
-						result = result + Integer.valueOf(values[i]);
+						result += Integer.valueOf(values[i]);
 						resultString = Integer.toString(result);
 						break;
 					case "mult": 
-						result = result * Integer.valueOf(values[i]);
+						result *= Integer.valueOf(values[i]);
 						resultString = Integer.toString(result);
 						break;
 
