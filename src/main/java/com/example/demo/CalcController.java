@@ -9,6 +9,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class CalcController {
 	
+	
+	//add tests dude
+	
 	//made a few different error handlings just to try
 	
 	//substraction operation of two values --> NumberFormatException
