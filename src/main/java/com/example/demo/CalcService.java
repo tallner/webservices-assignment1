@@ -43,7 +43,7 @@ public class CalcService {
 				}	
 			}
 		
-			return Integer.toString(result); 
+			return "Result: " + Integer.toString(result); 
 	}
 
 }

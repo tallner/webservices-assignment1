@@ -103,9 +103,9 @@ public class CalcServiceTest {
 		String actualMult = sut.MultVal("mult", values);
 		String actualSub = sut.MultVal("sub", values);
 		
-		String expectedAdd = "40";
-		String expectedMult = "10000";
-		String expectedSub = "-20";
+		String expectedAdd = "Result: 40";
+		String expectedMult = "Result: 10000";
+		String expectedSub = "Result: -20";
 		
 		assertEquals(actualAdd, expectedAdd);
 		assertEquals(actualMult, expectedMult);
@@ -120,9 +120,9 @@ public class CalcServiceTest {
 		String actualMult = sut.MultVal("mult", values);
 		String actualSub = sut.MultVal("sub", values);
 		
-		String expectedAdd = "40";
-		String expectedMult = "10000";
-		String expectedSub = "-20";
+		String expectedAdd = "Result: 40";
+		String expectedMult = "Result: 10000";
+		String expectedSub = "Result: -20";
 		
 		assertNotEquals(actualAdd, expectedAdd);
 		assertNotEquals(actualMult, expectedMult);
