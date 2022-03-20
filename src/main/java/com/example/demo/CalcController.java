@@ -1,6 +1,7 @@
 package com.example.demo;
 
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
@@ -9,84 +10,69 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class CalcController {
 	
-	//made a few different error handlings just to try
+	// add tests for all endpoints and the controller
+	// either abstract all calculations to separate classes and test each or 
+	// keep them in controller and test the controller class only
 	
-	//substraction operation of two values --> NumberFormatException
+	private CalcService myCalcService = new CalcService();
+	
+	//substraction operation of two values
 	@GetMapping("/sub")
-	public String substraction(String nr1, String nr2) {
+	public String sub(String nr1, String nr2) {
 		String result = "";
+		
 		try{			
-			 result = ("Result: " + (Integer.valueOf(nr1)-Integer.valueOf(nr2)));
+			 result = myCalcService.Substraction(nr1, nr2);
 		 }
 		catch(NumberFormatException e ){
 			result = ("Check your inputs");
 		 }
-		 
 		 return result;
 	}
 	
 	//addition operation of two values
 	@GetMapping("/add")
-	public String addition(int nr1, int nr2) {
+	public String add(String nr1, String nr2) {
 		String result = "";
-		
-		result = "Result: " + Integer.toString(nr1+nr2);
+
+		try{			
+			 result = myCalcService.Addition(nr1, nr2);
+		 }
+		catch(NumberFormatException e ){
+			result = ("Check your inputs");
+		 }
 		 
 		return result;
 	}
 	
-	//multiplication of two values --> just check if strings are values or not
+	//multiplication of two values
 	@GetMapping("/mult")
-	public String multiplication(String nr1, String nr2) {
-		
+	public String mult(String nr1, String nr2) {
 		String result = "";
 		
-		if (nr1.matches("[0-9]+") & nr2.matches("[0-9]+")) {
-			result = ("Result: " + (Integer.valueOf(nr1)*Integer.valueOf(nr2)));
-		}else result = "Check your inputs";
-		
+		try{			
+			 result = myCalcService.Multiplication(nr1, nr2);
+		 }
+		catch(NumberFormatException e ){
+			result = ("Check your inputs");
+		 }
+		 
 		return result;
-
 	}
 	
 	//user can select sub add or mult and any number of input variables
 	@GetMapping(value="/multVal/{type}/{values}")
-	public String test(@PathVariable String[] values, @PathVariable String type)
-	{
-		int result = 0;
-		String resultString = "";
+	public String multVal(@PathVariable String type, @PathVariable String[] values){
+		String result = "";
+		
 		try{			
-			result = Integer.valueOf(values[0]); //add the first value, otherwise the mult will be 0
-			
-			for (int i=1; i<values.length;i++) {
-				
-				switch (type) {
-					case "sub": 
-						result -= Integer.valueOf(values[i]);
-						resultString = Integer.toString(result);
-						break;
-					case "add": 
-						result += Integer.valueOf(values[i]);
-						resultString = Integer.toString(result);
-						break;
-					case "mult": 
-						result *= Integer.valueOf(values[i]);
-						resultString = Integer.toString(result);
-						break;
-
-				default: resultString = ("Check your inputs");
-					break;
-				}	
-			}
-			
+			 result = myCalcService.MultVal(type, values);
 		 }
 		catch(NumberFormatException e ){
-			resultString = ("Check your inputs");
+			result = ("Check your inputs");
 		 }
-		
-		
-		
-	    return resultString; 
+		 
+		return result;
 	}
 
 }
