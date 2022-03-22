@@ -25,25 +25,25 @@ public class CalcService {
 	public String MultVal(String type, String[] values) {
 		int result = Integer.valueOf(values[0]); //add the first value, otherwise the mult will be 0
 			
-			for (int i=1; i<values.length;i++) {
-				
-				switch (type) {
-					case "sub": 
-						result -= Integer.valueOf(values[i]);
-						break;
-					case "add": 
-						result += Integer.valueOf(values[i]);
-						break;
-					case "mult": 
-						result *= Integer.valueOf(values[i]);
-						break;
+		for (int i=1; i<values.length;i++) {
+			
+			switch (type) {
+				case "sub": 
+					result -= Integer.valueOf(values[i]);
+					break;
+				case "add": 
+					result += Integer.valueOf(values[i]);
+					break;
+				case "mult": 
+					result *= Integer.valueOf(values[i]);
+					break;
 
-				default: 
-					return ("Check your type input");
-				}	
-			}
-		
-			return "Result: " + Integer.toString(result); 
+			default: 
+				return ("Check your type input");
+			}	
+		}
+	
+		return "Result: " + Integer.toString(result); 
 	}
 
 }

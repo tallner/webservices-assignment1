@@ -1,20 +1,34 @@
 package com.example.demo;
 
 
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.web.servlet.error.ErrorController;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
-public class CalcController {
-	
-	// add tests for all endpoints and the controller
-	// either abstract all calculations to separate classes and test each or 
-	// keep them in controller and test the controller class only
+public class CalcController implements ErrorController {
 	
 	private CalcService myCalcService = new CalcService();
+	
+	//start page
+	@RequestMapping(
+			value = "/", 
+			method = RequestMethod.GET, 
+			produces = MediaType.TEXT_HTML_VALUE)
+	public String start() {
+		String result = "";
+		result += "<html><head><title>This is my calculator</title></head>";
+		result += "<body>";
+		result += "<h4>This is my calculator start page</h4>";
+
+		result += "</body></html>";
+		return result;
+	}
 	
 	//substraction operation of two values
 	@GetMapping("/sub")
@@ -73,6 +87,17 @@ public class CalcController {
 		 }
 		 
 		return result;
+	}
+	
+	
+	
+	
+	@RequestMapping(
+			value = "/error",
+			method = RequestMethod.GET,
+			produces = MediaType.TEXT_HTML_VALUE)
+	public String error() {
+		return "Wrong path" + "<br>" + start();
 	}
 
 }
