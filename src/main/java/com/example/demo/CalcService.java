@@ -1,11 +1,6 @@
 package com.example.demo;
 
-import org.springframework.web.bind.annotation.PathVariable;
-
 public class CalcService {
-	
-	private String nr1;
-	private String nr2;
 	
 	public CalcService() {
 	}
