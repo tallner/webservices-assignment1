@@ -1,0 +1,62 @@
+{"properties": [
+  {
+    "name": "paths./add.put.tags",
+    "type": "java.lang.String",
+    "description": "A description for 'paths./add.put.tags'"
+  },
+  {
+    "name": "openapi",
+    "type": "java.lang.String",
+    "description": "A description for 'openapi'"
+  },
+  {
+    "name": "info.title",
+    "type": "java.lang.String",
+    "description": "A description for 'info.title'"
+  },
+  {
+    "name": "info.description",
+    "type": "java.lang.String",
+    "description": "A description for 'info.description'"
+  },
+  {
+    "name": "info.termsOfService",
+    "type": "java.lang.String",
+    "description": "A description for 'info.termsOfService'"
+  },
+  {
+    "name": "info.contact.email",
+    "type": "java.lang.String",
+    "description": "A description for 'info.contact.email'"
+  },
+  {
+    "name": "info.license.name",
+    "type": "java.lang.String",
+    "description": "A description for 'info.license.name'"
+  },
+  {
+    "name": "info.license.url",
+    "type": "java.lang.String",
+    "description": "A description for 'info.license.url'"
+  },
+  {
+    "name": "info.version",
+    "type": "java.lang.String",
+    "description": "A description for 'info.version'"
+  },
+  {
+    "name": "externalDocs.url",
+    "type": "java.lang.String",
+    "description": "A description for 'externalDocs.url'"
+  },
+  {
+    "name": "externalDocs.description",
+    "type": "java.lang.String",
+    "description": "A description for 'externalDocs.description'"
+  },
+  {
+    "name": "servers",
+    "type": "java.lang.String",
+    "description": "A description for 'servers'"
+  }
+]}
